@@ -1,6 +1,7 @@
 require './lib/greenhouse.rb'
+require './lib/plant.rb'
 # require './lib/soil.rb'
-# require './lib/plant.rb'
+
 
 tomato_shed=Greenhouse.new "Tomato Shed"
 
@@ -8,4 +9,8 @@ tomato_shed=Greenhouse.new "Tomato Shed"
   tomato_shed.add_container name: "#{x}"
 end
 
-puts tomato_shed.containers.inspect
+ tomato_shed.containers.each do |id,container|
+   container.ingress=Plant::Tomato.new "tomato"
+ end
+
+puts tomato_shed.inspect
