@@ -1,7 +1,8 @@
 require 'digest/sha2'
 
 class Greenhouse
-  attr_accessor :id, :name, :containers
+  attr_reader :id, :name
+  attr_accessor :containers
 
   def initialize(name,containers={})
     idsha=Digest::SHA2.hexdigest "#{name}"+"#{Time.now.to_i}"
