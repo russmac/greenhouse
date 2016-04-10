@@ -35,7 +35,6 @@ class Greenhouse::Container
     @input=Array.new if @input.nil?
     # If its soil just add it.
     if newinput.instance_of?(Soil)
-      @input.class
       @input << newinput
     end
 
@@ -44,13 +43,9 @@ class Greenhouse::Container
       if @input.empty?
         puts "This container has no soil, I did not put the plant in: #{self.inspect}"
       else
-      @input.each do |input_obj|
-        if input_obj.instance_of?(Soil)
-          # If theirs soil in there plant the plant
-          @input << newinput
-          @soil=true
-          break
-        end
+      if @input.find(instance_of?(Soil))
+        @input << newinput
+        @soil=true
       end
         unless @soil
           puts "This container has no soil, I did not put the plant in: #{self.inspect}"
