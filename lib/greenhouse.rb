@@ -39,7 +39,7 @@ class Greenhouse::Container
         if @input.find(instance_of?(Soil))
            @input << newinput
         else
-           puts "This container has no soil, I did not put the plant in: #{self.inspect}"
+           raise ArgumentError "This container has no soil, I did not put the plant in: #{self.inspect}"
         end
       when newinput.instance_of?(Soil)
            @input << newinput

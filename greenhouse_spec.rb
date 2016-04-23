@@ -13,7 +13,7 @@ describe Greenhouse do
 
   describe "add a container" do
 
-    it "Creates a container in the greenhouse" do
+    it "Creates a container in the greenhouse and returns an id string" do
       expect(@rspec_shed.add_container).to match(/\w{4}/)
     end
   end
@@ -37,4 +37,18 @@ describe Greenhouse do
        end
      end
    end
+
+  describe "plant tomato with no soil" do
+    it "trys to plant a tomato in each of the containers with no soil." do
+      @rspec_shed=Greenhouse.new "rspec_shed"
+      containers=@rspec_shed.containers
+      containers.each_value do |container|
+        expect{container.new_input=Plant::Tomato.new "Tomato seedling"
+        }.to raise_error(ArgumentError)
+      end
+    end
+  end
+
 end
+
+
