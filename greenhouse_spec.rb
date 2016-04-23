@@ -38,6 +38,3 @@ describe Greenhouse do
      end
    end
 end
-
-
-
